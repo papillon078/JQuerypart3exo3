@@ -12,20 +12,31 @@
 
   <script type="text/javascript" src='assets/lib/jquery-3.4.1.min.js'></script>
   <script>
-
-  let rdmNumber = Math.random()*100;
+  // les 3 lignes suivante doivent s'excuter au rafraichissement de la page
+  //determination du nombre mystere
+  let rdmNumber = Math.trunc(Math.random()*100);
+  // initialisation du nombre de tentatives
   let tryNumber = 0;
-
+  const regexNumber = /^(0|[1-9][0-9]?|100)$/;
+  // debut des insstuctions au moment du clic sur le bouton d'essai
   $('#try').click(function(){
+    //incrémentation du nombre de tentatives
     tryNumber++;
+    // mise dans une variable de la proposition saisie dans le champ nombre
     let myNumber = $('#myNumber').val();
-    if (myNumber>rdmNumber){
-      alert('Moins');
+    // 1er test : le nombre saisi comparé à la regex nombre de 0 à 100
+    if(regexNumber.test(myNumber)){
+      //2e test : comparer la propositin au nombre mystere
+      if (myNumber>rdmNumber){
+        alert('Moins');
+      }
+      else if(myNumber<rdmNumber){
+        alert('Plus');
+      }
+      // qud le nombre est trouvé : affichage de reussite ET nombre de tentativess
+      else{alert('Correcte\n'+tryNumber+' essais');}
     }
-    else if(myNumber<rdmNumber){
-      alert('Plus');
-    }
-    else{alert('Correcte\n'+tryNumber+'essais');}
+    else {alert('Veuillez entrer un nombre entre 0 et 100');}
   });
 
 </script>
