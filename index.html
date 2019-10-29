@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <title>Exercice 3</title>
+</head>
+<body>
+  <label for='myNumber'>Devinez le nombre mystere entre 0 et 100!!</label>
+  <input type='number' id='myNumber' name='myNumber' />
+  <button type="button" name="try" id="try" >c'est ça ??</button>
+
+
+  <script type="text/javascript" src='assets/lib/jquery-3.4.1.min.js'></script>
+  <script>
+
+  let rdmNumber = Math.random()*100;
+  let tryNumber = 0;
+
+  $('#try').click(function(){
+    tryNumber++;
+    let myNumber = $('#myNumber').val();
+    if (myNumber>rdmNumber){
+      alert('Moins');
+    }
+    else if(myNumber<rdmNumber){
+      alert('Plus');
+    }
+    else{alert('Correcte\n'+tryNumber+'essais');}
+  });
+
+</script>
+</body>
+</html>
